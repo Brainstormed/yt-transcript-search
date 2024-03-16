@@ -6,11 +6,19 @@ from youtube_transcript_api import YouTubeTranscriptApi
 app = Flask(__name__)
 
 
+def is_url(url: str):
+    return url.lower.count("youtu")
+
+
 def id_of_url(url: str):
-    if url.lower().count("youtube.com/v/") != 0:
+    if is_url(url):
+        return url
+
+    elif url.lower().count("youtube.com/v/") != 0:
         start_index = url.index("v/") + 2
         end_index = start_index + 13
         return url[start_index:end_index]
+
     elif url.lower().count("youtu.be/") != 0:
         start_index = url.index("youtu.be") + 9
         end_index = start_index + 12
@@ -47,6 +55,7 @@ def index(name=None):
             "thumbnail": yt.thumbnail_url,
             "cc": cc_final,
         }
+
         return render_template("index.html", response=response)
 
     return render_template("index.html", name=name)
@@ -55,3 +64,7 @@ def index(name=None):
 @app.errorhandler(500)
 def internal_server_error(error=None):
     return render_template("index.html", error="The url you have provided is invalid!")
+
+@app.errorhandler(404)
+def internal_server_error(error=None):
+    return render_template("index.html", error="The page was not found!")
