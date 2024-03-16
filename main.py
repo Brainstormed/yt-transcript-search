@@ -7,7 +7,13 @@ app = Flask(__name__)
 
 
 def is_url(url: str):
-    return url.lower.count("youtu")
+    return url.lower().count("youtu") != 0
+
+
+def to_url(url: str):
+    if not is_url(url):
+        return f"youtu.be/{url}"
+    return url
 
 
 def id_of_url(url: str):
@@ -33,7 +39,7 @@ def id_of_url(url: str):
 def index(name=None):
     if request.method == "POST":
         data = request.form
-        yt = YouTube(data["id"])
+        yt = YouTube(to_url(data["id"]))
         transcript = YouTubeTranscriptApi.get_transcript(id_of_url(data["id"]))
 
         count = 0
@@ -64,6 +70,7 @@ def index(name=None):
 @app.errorhandler(500)
 def internal_server_error(error=None):
     return render_template("index.html", error="The url you have provided is invalid!")
+
 
 @app.errorhandler(404)
 def internal_server_error(error=None):
