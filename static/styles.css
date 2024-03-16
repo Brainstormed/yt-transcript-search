@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+body {
+    background-color: #292929;
+    color: #e4e4e4;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    font-size: 2.1em;
+}
+
+hr {
+    margin-bottom: 2em;
+    width: 30em;
+    max-width: 95%;
+}
+
+[type="text"] {
+    height: 1.5em;
+    font-size: 1.1em;
+    font-family: Poppins, sans-serif;
+    max-width: 90%;
+    padding-left: 0.3em;
+    width: 17em;
+}
+
+[type="submit"] {
+    border: #d4d4d4 solid 2px;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    height: 1.7em;
+    background-color: #e0f5ff;
+    font-family: Poppins, sans-serif;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: auto;
+    margin-bottom: 0.5em;
+    margin-top: 1em !important;
+}
+
+span {
+    color: rgb(235, 48, 48);
+    font-size: 1.4em;
+}
+
+#output {
+    margin-top: 4em;
+    user-select: none;
+    opacity: 0.6;
+    font-size: 1.2em;
+    font-family: "JetBrains Mono", monospace;
+}
+
+#hr-2 {
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+img {
+    width: 25em;
+    aspect-ratio: 16/9;
+    border-radius: 5px;
+    border: #e4e4e4 3px solid;
+    margin-top: 1em;
+}
+
+#yt-title {
+    margin-top: 0.7em;
+}
+
+#res {
+    font-size: 1.2em;
+}
+
+@keyframes error {
+    25% {
+        transform: translateX(0.5em);
+    }
+    75% {
+        transform: translateX(-0.5em);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

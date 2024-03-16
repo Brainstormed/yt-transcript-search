@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Youtube Transcript Search</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='styles.css') }}"
+        />
+        <link
+            rel="shortcut icon"
+            href="{{ url_for('static', filename='logo.svg') }}"
+            type="image/x-icon"
+        />
+    </head>
+    <body>
+        <h1>Youtube Transcript Search</h1>
+        <hr />
+        <form action="/" method="post">
+            <label for="id">Enter the Youtube video url<span>*</span>:</label>
+            <input
+                type="text"
+                name="id"
+                id="id"
+                value="{% if response %}{{response['id']}}{% endif %}"
+                required
+            /><br />
+            <label for="word" style="margin-top: 3em"
+                >Enter the word you want to search<span>*</span>:</label
+            >
+            <input
+                type="text"
+                name="word"
+                id="word"
+                value="{% if response %}{{response['word']}}{% endif %}"
+                required
+            /><br />
+            <hr id="hr-2" />
+            <input type="submit" value="Search" id="button" />
+        </form>
+        {% if response %}
+        <p id="res">
+            The word "{{response['word']}}" has appeared {{response['count']}}
+            times in the given video!
+        </p>
+        <img src="{{response['thumbnail']}}" alt="{{response['title']}}" />
+        <p id="yt-title">{{response['title']}}</p>
+        {% endif %}
+        <p>{{error}}</p>
+    </body>
+</html>
