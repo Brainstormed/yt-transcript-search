@@ -68,6 +68,7 @@ img {
     border-radius: 5px;
     border: #e4e4e4 3px solid;
     margin-top: 1em;
+    max-width: 90vw;
 }
 
 #yt-title {
@@ -76,16 +77,4 @@ img {
 
 #res {
     font-size: 1.2em;
-}
-
-@keyframes error {
-    25% {
-        transform: translateX(0.5em);
-    }
-    75% {
-        transform: translateX(-0.5em);
-    }
-    100% {
-        transform: translateX(0);
-    }
 }

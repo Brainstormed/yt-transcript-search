@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 
 def id_of_url(url: str):
-    if (url.lower().count("youtube.com/v/") != 0):
+    if url.lower().count("youtube.com/v/") != 0:
         start_index = url.index("v/") + 2
         end_index = start_index + 13
         return url[start_index:end_index]
-    elif (url.lower().count("youtu.be/") != 0):
+    elif url.lower().count("youtu.be/") != 0:
         start_index = url.index("youtu.be") + 9
         end_index = start_index + 12
         return url[start_index:end_index]
@@ -26,9 +26,7 @@ def index(name=None):
     if request.method == "POST":
         data = request.form
         yt = YouTube(data["id"])
-        transcript = YouTubeTranscriptApi.get_transcript(
-            id_of_url(data["id"])
-        )
+        transcript = YouTubeTranscriptApi.get_transcript(id_of_url(data["id"]))
 
         count = 0
         cc_arr = []
@@ -52,6 +50,7 @@ def index(name=None):
         return render_template("index.html", response=response)
 
     return render_template("index.html", name=name)
+
 
 @app.errorhandler(500)
 def internal_server_error(error=None):
