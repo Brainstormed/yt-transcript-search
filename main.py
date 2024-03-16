@@ -11,7 +11,7 @@ def is_url(url: str):
 
 
 def id_of_url(url: str):
-    if is_url(url):
+    if not is_url(url):
         return url
 
     elif url.lower().count("youtube.com/v/") != 0:
